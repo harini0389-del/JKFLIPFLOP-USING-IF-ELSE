@@ -82,3 +82,4 @@ endmodule
 
 
 **RESULTS**
+The JK Flip-Flop was successfully implemented using Verilog HDL and its functionality was verified using the functional table.
