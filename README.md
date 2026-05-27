@@ -38,50 +38,47 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: Harini M RegisterNumber: 212225240047
 */JK FLIPFLOP USING IF ELSE STATEMENT
-
-module jk_ff (j, k, clk, rst, q);
-  input j, k, clk, rst;
-  output reg q;
-  always @(posedge clk or posedge rst) begin
-    if (rst)
-      q <= 0; // Reset the flip-flop
-    else if (j == 0 && k == 0)
-      q <= q; // No change
-    else if (j == 0 && k == 1)
-      q <= 0; // Reset
-    else if (j == 1 && k == 0)
-      q <= 1; // Set
-    else if (j == 1 && k == 1)
-      q <= ~q; // Toggle
-  end
+```
+module jk(q, qb,j,k,clock,reset);
+    input j,k,clock,reset;
+    output reg q, qb;
+always @ (posedge (clock))
+    begin 
+        if (!reset)
+            begin
+               q <= q;
+               qb <=qb;
+            end  
+else
+            begin
+               if (j == 0 && k == 0)
+                    begin
+                    q <= q;
+qb <= qb;
+                    end 
+else if (j != k)
+                    begin
+                    q <= j;
+                    qb <= k;
+                    end
+               else if (j == 1 && k == 1) 
+                    begin 
+                    q <= ~q; 
+                    qb <= ~qb; 
+                    end 
+            end
+end  
 endmodule
-
-(OR)
-JK FLIPFLOP
-
-module jkff(j,k,clk,q,qbar);
-input j,k,clk;
-output reg q,qbar;
-initial 
-begin
-q=1'b0;
-qbar=1'b1;
-end 
-
-always @(posedge clk)
-begin 
-q<=(j&~q)|(~k&q);
-qbar<=~q;
-end
-endmodule
-
+```
 
 **RTL LOGIC FOR FLIPFLOPS**
-<img width="1242" height="542" alt="image" src="https://github.com/user-attachments/assets/376372d8-fe9d-4f60-867a-6c5566952fbd" />
+<img width="1874" height="840" alt="image" src="https://github.com/user-attachments/assets/c7cf00ad-8e8d-4dc9-9ad0-0add9eec66b8" />
+
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
-<img width="1327" height="200" alt="image" src="https://github.com/user-attachments/assets/758da3b0-22d1-4389-9165-1ea171f0121c" />
+<img width="1912" height="343" alt="image" src="https://github.com/user-attachments/assets/a41cc48e-277a-4403-930e-fb42cf517ae9" />
+
 
 **RESULTS**
